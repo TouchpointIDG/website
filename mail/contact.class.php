@@ -2,22 +2,58 @@
 
 class contact
 {
-    function send_text($email_content)
+    function communicateWithAdmins($content, $priority)
     {
-        //recipients of the message
-        $to = "number@vtext.com, number@messaging.sprintpcs.com, so on and so forth...";
-        
-        //subject changes based on priority level
-        $email_subject = $email_content['Priority'] . " Priority - Website Contact Form\r\n";
-        
-        //initializes the variable
-        $email_body = "";
-        
-        //loops through every item in the array and stores it in the email body
-        foreach($email_content as $x => $x_value)
+		//change later
+		$key = "";
+		
+		//loops through every item in the array and stores it in the email body
+        foreach($content as $x => $x_value)
         {
             $email_body .= $x . " : " . $x_value . "\r\r";
         }
+        
+        $client_email = $content["Email"];
+		
+		//encrypt message both with PGP and AES
+        $content = $this->encryptMessage($email_body);
+        $encryptedStoredMessage = $this->encryptMessageSymmetric($email_body, $key);
+        
+        $link = $client_email . uniqid();
+        
+        $this->storeEncryptedMessage($encryptedStoredMessage, "../contact/history/" . $link);
+        
+        $link = "https://tpidg.us/contact/history/index.php?r=" . $link;
+		
+		//based on the priority level, it sends the approriate alerts
+		switch($priority)
+		{
+			case "Low":
+				$this->send_email($content, $client_email, $link, $priority);
+				break;
+			case "Medium":
+				$this->send_email($content, $client_email, $link, $priority);
+				break;
+			case "High":
+				$this->send_email($content, $client_email, $link, $priority);
+				$this->send_text($content, $client_email, $link, $priority);
+				break;
+			default :
+				$this->send_email($content, $client_email, $link, $priority);
+				break;
+		}
+	}
+	
+    private function send_text($email_content, $client_email, $link, $priority)
+    {
+        //recipients of the message
+        $to = "number@vtext.com, number@messaging.sprintpcs.com, so on...";
+        
+        //subject changes based on priority level
+        $email_subject = $priority . " Priority - Website\r\n";
+        
+        //initializes the variable
+        $email_body = $link . "\n" . $client_email;      
         
         $headers = "From: noreply@tpidg.us\n";
         
@@ -25,32 +61,24 @@ class contact
         mail($to, $email_subject, $email_body, $headers);
     }
     
-    function send_email($email_content)
+    private function send_email($email_content, $client_email, $link, $priority)
     {
         //recipients of the message
         $to = 'info@tpidg.us';
         
         //subject changes based on priority level
-        $email_subject = $email_content['Priority'] . " Priority - Website Contact Form";
+        $email_subject = $priority . " Priority - Website Contact Form";
        
         //initializes the variable
-        $email_body = "";
-        
-        //loops through every item in the array and stores it in the email body
-        foreach($email_content as $x => $x_value)
-        {
-            $email_body .= $x . " : " . $x_value . "\r\r";
-        }
+        $email_body = $link . "\n" . $email_content;
         
         //headers to control who sent and who to reply to
         $headers = 'From: noreply@tpidg.us' . "\r\n";
-        $headers .= 'Reply-to: ' . $email_content["Email"] . "\r\n";
+        $headers .= 'Reply-to: ' . $client_email . "\r\n";
         
-        //encrypt message
-        $encryptedMessage = $this->encryptMessage($email_body);
         
         //send it off
-        mail($to,$email_subject,$encryptedMessage,$headers);
+        mail($to,$email_subject,$email_body,$headers);
     }
     
     function send_reg_email ($to, $token)
@@ -77,7 +105,7 @@ class contact
 			return false;
 		}
 	}
-	
+    
     function send_pass_reset_email ($to, $token)
     {   
         //subject changes based on priority level
@@ -131,15 +159,71 @@ class contact
 	}
 	
 	//## This function encrypts messages with info@tpidg.us public PGP key ##
-	function encryptMessage($message)
+	private function encryptMessage($message)
 	{
 		$gpg = new gnupg();
 		
 		//adds the encryption key by uid
-		$gpg->addencryptkey("5C47777CA5AB888F42F1F78808B1DFCB5B8F88E4");
+		$gpg->addencryptkey("5C47 777C A5AB 888F 42F1  F788 08B1 DFCB 5B8F 88E4");
 		
 		//encrypts the message and returns it back to the calling function
 		return $gpg->encrypt($message);
+	}
+	
+	//## This function encrypts a message with AES-256-CTR ##
+	private function encryptMessageSymmetric($message, $key)
+	{
+		//an initialization vector based on random bytes grabbed from the kernel
+		$iv = random_bytes(openssl_cipher_iv_length('aes-256-ctr'));
+		
+		//gotta have an hmac taken before the message gets encrypted
+		$hmac = hash_hmac('sha256', $message, $key);
+
+		//short of writing my own crypto, openssl is the best bet for this situation
+		//it should be noted I chose ctr mode because it worked best for this use case
+		$encrypted = openssl_encrypt($message, 'aes-256-ctr', $key, 0, $iv);
+	
+		//return the encrypted string in human readable format as base64
+		//string format:	encryptedstring:iv:hmac
+		return base64_encode($encrypted . ':' . $iv . ':' . $hmac);
+	}
+	
+	//## This function decrypts a message with AES-256-CTR ##
+	function decryptMessageSymmetric($message, $key)
+	{
+		//pulls the encrypted data, the hmac and the iv apart
+		$parts = explode(':', $message);
+				
+		//decrypts the encrypted message using the first two parts of the string
+		$plaintext = openssl_decrypt($parts[0], 'aes-256-ctr', $key, 0, $parts[1]);
+		
+		//takes an hmac of the decrypted string
+		$hmac_taken = hash_hmac('sha256', $plaintext, $key);
+		
+		//compares the hmacs to confirm data integrity
+		if($parts[2] == $hmac_taken)
+		{
+			//if it matches, return the decrypted string
+			return $plaintext;
+		}
+		else
+		{
+			//if it doesn't match, return an error message
+			return "hmacs do not match";
+		}
+	}
+	
+	//## Stores the encrypted message as file ##
+	private function storeEncryptedMessage($message, $filename)
+	{
+		//creates a new file
+		$myfile = fopen($filename, "w") or die("Error! Try again.");
+		
+		//writes to the new file
+		fwrite($myfile, $message);
+		
+		//closes the file
+		fclose($myfile);
 	}
 }
 
