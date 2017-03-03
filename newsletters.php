@@ -1,8 +1,13 @@
+<?php
+	$nvc_count = 7;
+	$nsc_count = 24;
+?>
+
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<title>TPIDG Digital Updates</title>
+		<title>Digital Updates | Touchpoint IDG | TPIDG.US</title>
 
 		<!-- META TAGS-->
 		<meta charset="utf-8">
@@ -14,332 +19,83 @@
 		<meta name="google-site-verification" content="Yk6JHgiAcHxpIWzoNJyf6ErhFOtzgx-CuMcJsXHKffo" />
 
 		<!-- CSS -->
-		<link href="/css/main_styles.css" rel="stylesheet">
+		<link href="/css/main_styles.new.css" rel="stylesheet">
 
 	</head>
 
 
 
 	<body>
-		<?php include("resources/navigation.php"); ?>
-
-		<div class="bigbox">
-			<div class="bigbox-inner">
-				<h2 class="pagehead">Digital Updates</h2>  
-
-				<div class="para2">
-					
-					<div class="issueblock">
-						<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/digests.txt">
-							<p> File Digests </p>
-							<input type="submit" Value="View">
-						</form>
-					</div>
-
-					<!-- MARCH -->
-					<div class="newsletters" id="march">
-						<h3 class="parahead">March</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume1_Issue1.pdf">
-								<p> Volume One Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume1_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume1_Issue2.pdf">
-								<p> Volume One Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume1_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
+		<div id="wrapper">
+			<?php include("resources/navigation.new.php"); ?>
 
 
-					<!-- APRIL -->
-					<div class="newsletters" id="april">
-						<h3 class="parahead">April</h3>
+			<div id="content">
 
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume2_Issue1.pdf">
-								<p> Volume Two Issue One </p>
-								<input type="submit" Value="View">
-							</form>
+<!-- LEFT COLUMN -->
+				<div class="para col3">
 
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume2_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
+					<h3>
+						Non-Standard Communications Digital Updates
+					</h3>
+					<ul class="newsletters">
 
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume2_Issue2.pdf">
-								<p> Volume Two Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
+<?php for($vol = $nsc_count; $vol > 0; $vol--) : ?>
 
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume2_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-					
-					<!-- MAY -->
-					<div class="newsletters" id="may">
-						<h3 class="parahead">May</h3>
+						<li>
+							<a target="_blank" href="/newsletters/downloads/NSC/NSC_<?php echo $vol; ?>.pdf">
+								NSC #<?php echo $vol; ?>
+							</a>
+						</li>
 
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume3_Issue1.pdf">
-								<p> Volume Three Issue One </p>
-								<input type="submit" Value="View">
-							</form>
+<?php endfor; ?>
 
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume3_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
+					</ul>
+				</div>
 
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume3_Issue2.pdf">
-								<p> Volume Three Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
+<!-- MIDDLE COLUMN -->
+				<div class="para col3">
 
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume3_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
+					<form method="post" action="newsletters/subscribe.php">
+						<input type="text" name="email" placeholder="Email Address..." maxlength="150" required>
+						<input type="submit" name="submit" Value="Subscribe">
+					</form>
 
-
-					<!-- JUNE -->
-					<div class="newsletters" id="june">
-						<h3 class="parahead">June</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume4_Issue1.pdf">
-								<p> Volume Four Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume4_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume4_Issue2.pdf">
-								<p> Volume Four Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume4_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-
-					<!-- JULY -->
-					<div class="newsletters" id="july">
-						<h3 class="parahead">July</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume5_Issue1.pdf">
-								<p> Volume Five Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume5_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume5_Issue2.pdf">
-								<p> Volume Five Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume5_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-					
-					<!-- AUGUST -->
-					<div class="newsletters" id="august">
-						<h3 class="parahead">August</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume6_Issue1.pdf">
-								<p> Volume Six Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume6_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume6_Issue2.pdf">
-								<p> Volume Six Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume6_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-					
-					
-					<!-- SEPTEMBER -->
-					<div class="newsletters" id="september">
-						<h3 class="parahead">September</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume7_Issue1.pdf">
-								<p> Volume Seven Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume7_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume7_Issue2.pdf">
-								<p> Volume Seven Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume7_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-					
-					
-					<!-- OCTOBER -->
-					<div class="newsletters" id="october">
-						<h3 class="parahead">October</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume8_Issue1.pdf">
-								<p> Volume Eight Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume8_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-						<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume8_Issue2.pdf">
-								<p> Volume Eight Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume8_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-					
-					
-					<!-- November -->
-					<div class="newsletters" id="november">
-						<h3 class="parahead">November</h3>
-
-						<!-- ISSUE ONE -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume9_Issue1.pdf">
-								<p> Volume Nine Issue One </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume9_Issue1.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-
-							<!-- ISSUE TWO -->
-						<div class="issueblock">
-							<form method="get" class="newsbuttons" target="_blank" action="/newsletters/downloads/NWSLTR_Volume9_Issue2.pdf">
-								<p> Volume Nine Issue Two </p>
-								<input type="submit" Value="View">
-							</form>
-
-							<form method="get" class="newsbuttons" action="/newsletters/download.php">
-								<input type="hidden" name="filename" value="NWSLTR_Volume9_Issue2.pdf">
-								<input type="submit" value="Download">
-							</form>
-						</div>
-						
-					</div>
-
+					<!--a href="newsletters/downloads/digests.txt">
+						File Digests
+					</a-->
 
 				</div>
+
+<!-- RIGHT COLUMN -->
+				<div class="para col3">
+
+					<h3>
+						Non-Verbal Communications Digital Updates
+					</h3>
+					<ul class="newsletters">
+
+
+<?php for($vol = $nvc_count; $vol > 0; $vol--) : ?>
+
+						<li>
+							<a target="_blank" href="/newsletters/downloads/NVC/NVC_<?php echo $vol; ?>.pdf">
+								NVC #<?php echo $vol; ?>
+							</a>
+						</li>
+
+<?php endfor; ?>
+
+					</ul>
+				</div>
+
+
 			</div>
+				<?php include("resources/footer.new.php"); ?>
+
 		</div>
 
-		<?php include("resources/footer.php"); ?>
-
-		<!-- Core JavaScript -->
-		<script src="/js/jquery-1.12.4.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/rollover.js"></script>
+		<?php include_once("resources/footer_scripts.php") ?>
 
 		<?php include_once("resources/analytics.php"); ?>
 
