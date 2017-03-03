@@ -3,7 +3,7 @@
 
 
 	<head>
-		<title>TPIDG Home</title>
+		<title>Home | Touchpoint IDG | TPIDG.US</title>
 
 		<!-- META TAGS-->
 		<meta charset="utf-8">
@@ -15,46 +15,66 @@
 		<meta name="google-site-verification" content="Yk6JHgiAcHxpIWzoNJyf6ErhFOtzgx-CuMcJsXHKffo" />
 
 		<!-- CSS -->
-		<link href="/css/main_styles.css" rel="stylesheet">
+		<link href="/css/main_styles.new.css" rel="stylesheet">
 
 	</head>
 
 
 	<body>
-		<?php include("resources/navigation.php"); ?>
-		<?php include("resources/carousel.php"); ?>
+		<div id="wrapper">
+			<?php include("resources/navigation.new.php"); ?>
 
-		<h1 class="helpheader">
-			Touchpoint: the interface of a service before, during and after a transaction.
-		</h1>
+			<div id="content">
+				<article class="para">
+					<header>
+						<h2>
+							Quick Links
+						</h2>
+					</header>
 
-		<?php include("resources/help_button.php") ?>
+					<ul id="index-nav">
+						<li>
+							<a href="contact.php" target="_blank">
+								24/7 Support
+							</a>
+						</li>
+						<li>
+							<a href="about.php" target="_blank">
+								About Touchpoint IDG
+							</a>
+						</li>
+						<li>
+							<a href="newsletters/downloads/NSC/NSC_24.pdf" target="_blank">
+								Latest Digital Update
+							</a>
+						</li>
+					</ul>
+				</article>
 
-		<?php include("resources/portfolio.php"); ?>
+				<aside>
+					<img id="index-logo" src="/img/new_logo.png" alt="Touchpoint Logo" />
+				</aside>
 
-		<h1 style="visibility:hidden;">
-			Touchpoint International Development Group, INC
-		</h1>
+				<div class="para" id="index-about">
+					<h1>
+						Touchpoint International Development Group Incorporated
+					</h1>
+					<p class="desc">
+						Touchpoint International Development Group (Touchpoint IDG) is a security-cleared Service Disabled Veteran Owned Small Business (SDVOSB) that conducts specialized training, security services and logistical support.
+					</p>
+					<p class="tag-line">
+						The interface of a service before, during and after a service.
+					</p>
+				</div>
 
-		<?php include("resources/footer.php"); ?>
+			</div>
+
+			<?php include("resources/footer.new.php"); ?>
+		</div>
 
 		<?php include_once("resources/analytics.php") ?>
+		<?php include_once("resources/footer_scripts.php") ?>
 
-		<!-- Core JavaScript -->
-		<script src="/js/jquery-1.12.4.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/rollover.js"></script>
-
-		<!-- Makes the carousel work -->
-		<script type="text/javascript">
-			$('.carousel').carousel({
-			interval: 10000 //changes the speed
-			})
-		</script>
-		
-		<script type="text/javascript">
-			imagerollover()
-		</script>
 
 	</body>
 </html>
