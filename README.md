@@ -1,4 +1,4 @@
-# https://tpidg.us
+# https://www.tpidg.us
 
 Touchpoint IDG's website is completely open source except for passwords, api keys and identifying information that could compromise our security.
 
