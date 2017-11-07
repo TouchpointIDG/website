@@ -1,0 +1,3 @@
+Contact: admin@tpidg.us
+Encryption: https://www.tpidg.us/pgp/public/admin@tpidg.us.asc
+Acknowledgements: 
