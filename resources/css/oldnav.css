@@ -1,0 +1,136 @@
+/* ##### BEGIN NAVBAR PROPERTIES ##### */
+
+.navbar {
+	height: 100%;
+	width: 100%;
+	border-bottom: 2px solid white;
+	padding: 0px 10px;
+	min-height: 50px;
+}
+
+.sr-only {
+	visibility: hidden;
+}
+
+.icon-bar {
+	display: block;
+	height: 2px;
+	border-radius: 1px;
+	background-color: #fff;
+	margin: 5px;
+}
+
+.navbar-toggle {
+	border: 1px solid black;
+	float: right;
+	padding: 0px;
+	background-color: transparent;
+	border-radius: 4px;
+	height: 0;
+	width: 0;
+	visibility: collapse;
+}
+
+.logo {
+	padding-top: 10px;
+	float: left;
+	padding: 5px;
+	height: 75%;
+}
+
+.navbar-brand {
+	float: left;
+	height: 100%;
+	width: auto;
+	padding: 0px;
+}
+
+.navbar-header {
+	height: 50px;
+	float: left;
+}
+
+.nav > li > a {
+	color: white;
+	display: block;
+	position: relative;
+	line-height: 20px;
+	padding: 15px;
+}
+
+.nav {
+	list-style-type: none;
+	padding: 0px;
+	margin: auto;
+	float: right;
+}
+
+.nav > li {
+	height: 100%;
+	float: left;
+}
+
+.nav > li:hover {
+	background-color: #A0A0A0;
+}
+
+.topmenu {
+    font-weight:bold;
+    font-size:10px;
+	letter-spacing: 1.1px;
+}
+
+
+/* ## Mobile Display Properties ## */
+
+@media (max-width: 315px) {
+	.navbar-brand {
+		height: 80%;
+	}
+}
+
+@media (max-width: 800px) {
+	.navbar-collapse.in {
+		overflow-y: auto;
+	}
+
+	.navbar-collapse {
+		padding-left: 15px;
+	}
+
+	.collapse.in {
+		display: block;
+		height: 100%;
+	}
+
+	.collapse {
+		display: none;
+	}
+
+	.navbar-toggle {
+		margin-top: 10px;
+		height: 75%;
+		width: 40px;
+		visibility: visible;
+		outline: none;
+	}
+
+	.navbar-header {
+		width: 100%;
+	}
+
+	.nav > li {
+		width: 100%;
+		text-align: center;
+	}
+
+	.nav {
+		border-top: 1px solid #A0A0A0;
+		margin-left: -15px;
+		float: none;
+	}
+}
+
+
+
+/* ##### END NAVBAR PROPERTIES ##### */
