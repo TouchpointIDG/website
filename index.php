@@ -1,60 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 	<head>
-		<title>TPIDG Home</title>
+		<title>Technical and Tactical Solutions | Touchpoint IDG | TPIDG.US</title>
 
 		<!-- META TAGS-->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Touchpoint International Development Group (Touchpoint IDG) is a security-cleared Service Disabled Veteran Owned Small Business (SDVOSB) that conducts specialized training and security services to Special Operations Forces (SOF) and the Intelligence Community (IC).">
-		<meta name="author" content="Touchpoint International Development Group, Inc.">
-		<meta name="keywords" content="TPIDG, Touchpoint, IDG, International Development Group, INC, Touchpoint International Development Group, INC, index, home">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="TPIDG is a security-cleared SDVOSB that conducts specialized training and security services for Special Operations Forces and the Intelligence Community">
+		<meta name="keywords" content="TPIDG, Touchpoint IDG, Touchpoint International Development Group INC, Tactical and Technical Solutions">
 		<meta name="google-site-verification" content="Yk6JHgiAcHxpIWzoNJyf6ErhFOtzgx-CuMcJsXHKffo" />
 
 		<!-- CSS -->
-		<link href="/css/main_styles.css" rel="stylesheet">
+		<link href="/resources/css/styles.min.css" rel="stylesheet">
 
+		<script type="application/ld+json">
+			{
+				"@context":"http://schema.org",
+			  "@type": "Organization",
+			  "url": "https://www.tpidg.us/",
+				"address": {
+			    "@type": "PostalAddress",
+			    "addressLocality": "Fayetteville",
+			    "addressRegion": "NC",
+			    "postalCode": "28311",
+			    "streetAddress": "3771 Ramsey St #109-143"
+		  	},
+				"email": "info@tpidg.us",
+				"telephone": "+1-910-920-0350"
+			}
+		</script>
+
+		<?php include('resources/page-elements/favicon.php'); ?>
 	</head>
 
 
 	<body>
-		<?php include("resources/navigation.php"); ?>
-		<?php include("resources/carousel.php"); ?>
+		<div id="wrapper">
+			<?php include("resources/page-elements/navigation.php"); ?>
 
-		<h1 class="helpheader">
-			Touchpoint: the interface of a service before, during and after a transaction.
-		</h1>
+			<div id="content">
+				<article class="para">
+					<header>
+						<h2>
+							Quick Links
+						</h2>
+					</header>
 
-		<?php include("resources/help_button.php") ?>
+					<ul id="index-nav">
+						<li>
+							<a href="contact/" target="_blank">
+								24/7 Support
+							</a>
+						</li>
+						<li>
+							<a href="about/" target="_blank">
+								About Touchpoint IDG
+							</a>
+						</li>
+						<li>
+							<a href="newsletters/" target="_blank">
+								Digital Updates
+							</a>
+						</li>
+						<li>
+							<a href="https://store.tpidg.us" target="_blank">
+								Store
+							</a>
+						</li>
+						<li>
+							<a href="about/osint.php" target="_blank">
+								OSINT Tools
+							</a>
+						</li>
+					</ul>
+				</article>
 
-		<?php include("resources/portfolio.php"); ?>
+				<aside>
+					<img id="index-logo" src="/resources/img/logo.png" alt="TPIDG Logo" />
+				</aside>
 
-		<h1 style="visibility:hidden;">
-			Touchpoint International Development Group, INC
-		</h1>
+				<aside class="middle-aside">
+					<div id="product-otm" onClick="window.open('https://store.tpidg.us/order/')">
+						<img id="product-otm-img" src="/resources/img/products/flir-scope.png" alt="Featured Product" />
+						<h3>Featured Product</h3>
+						<div class="overlay">
+							<button>Request More Info</button>
+						</div>
+					</div>
+				</aside>
 
-		<?php include("resources/footer.php"); ?>
+				<div class="para" id="index-about">
+					<header>
+						<h1>
+							Touchpoint International Development Group Incorporated
+						</h1>
+					</header>
+					<p class="desc">
+						Touchpoint International Development Group (Touchpoint IDG) is a security-cleared Service Disabled Veteran Owned Small Business (SDVOSB) that conducts specialized training, security services and logistical support.
+					</p>
+					<p class="tag-line">
+						It's a marathon, not a sprint.
+					</p>
+				</div>
 
-		<?php include_once("resources/analytics.php") ?>
+			</div>
 
-		<!-- Core JavaScript -->
-		<script src="/js/jquery-1.12.4.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/rollover.js"></script>
+			<?php include("resources/page-elements/footer.php"); ?>
+		</div>
 
-		<!-- Makes the carousel work -->
-		<script type="text/javascript">
-			$('.carousel').carousel({
-			interval: 10000 //changes the speed
-			})
-		</script>
-		
-		<script type="text/javascript">
-			imagerollover()
-		</script>
+		<?php include_once("resources/page-elements/analytics.php") ?>
+		<script src="/resources/js/nav-scripts.min.js"></script>
 
 	</body>
 </html>

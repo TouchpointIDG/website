@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /dungeon/
+Sitemap: https://www.tpidg.us/sitemap.xml
